@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For You Mom 💖</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.backBtn{
+
+    position:absolute;
+
+    bottom:35px;
+
+    padding:12px 30px;
+
+    border:none;
+    border-radius:40px;
+
+    background:linear-gradient(45deg,#ff5f9e,#ff8fab);
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 25px rgba(255,105,180,0.3);
+
+    transition:0.3s;
+}
+
+.backBtn:hover{
+    transform:scale(1.08);
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family:'Poppins',sans-serif;
+    position:relative;
+
+    background:linear-gradient(-45deg,
+    #ffe0ec,
+    #fff0e7,
+    #f9ddff,
+    #ffe8f3);
+
+    background-size:400% 400%;
+    animation:bgMove 10s ease infinite;
+}
+
+/* animated bg */
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* floating decorations */
+
+.float{
+    position:absolute;
+    bottom:-50px;
+    animation:floatUp linear forwards;
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* sparkles */
+
+.sparkle{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:0.3;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.8);
+    }
+}
+
+/* title */
+
+h1{
+    color:#ff4f87;
+    font-size:60px;
+    text-align:center;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,0.9),
+    0 0 25px rgba(255,105,180,0.4);
+
+    animation:fadeUp 1.2s ease;
+}
+
+/* subtitle */
+
+.subtitle{
+    margin-top:10px;
+    color:#7b5c5c;
+    font-size:22px;
+    animation:fadeUp 1.5s ease;
+}
+
+/* cards */
+
+.cards{
+    margin-top:70px;
+
+    display:flex;
+    gap:35px;
+    flex-wrap:wrap;
+    justify-content:center;
+
+    animation:fadeUp 2s ease;
+}
+
+/* individual card */
+
+.card{
+
+    width:170px;
+    height:190px;
+
+    background:rgba(255,255,255,0.35);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:30px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 25px rgba(255,105,180,0.2);
+
+    transition:0.35s;
+}
+
+.card:hover{
+
+    transform:
+    translateY(-10px)
+    scale(1.05);
+
+    box-shadow:
+    0 15px 35px rgba(255,105,180,0.35);
+}
+
+/* icons */
+
+.icon{
+    font-size:65px;
+}
+
+.cardText{
+    margin-top:18px;
+    color:#ff4f87;
+    font-size:22px;
+    font-weight:600;
+}
+
+/* fade animation */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* custom cursor */
+
+/* premium cursor tail */
+
+.particle{
+
+    position:fixed;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,105,180,1),
+    rgba(255,105,180,0));
+
+    z-index:9999;
+
+    animation:fadeOut 0.8s linear forwards;
+}
+
+@keyframes fadeOut{
+
+    from{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    to{
+        opacity:0;
+        transform:scale(2.8);
+    }
+}
+
+/* mobile */
+
+@media(max-width:700px){
+
+    h1{
+        font-size:42px;
+        padding:0 15px;
+    }
+
+    .subtitle{
+        font-size:18px;
+        text-align:center;
+        padding:0 20px;
+    }
+
+    .cards{
+        gap:20px;
+        margin-top:45px;
+    }
+
+    .card{
+        width:140px;
+        height:160px;
+    }
+
+    .icon{
+        font-size:50px;
+    }
+
+    .cardText{
+        font-size:18px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+<div class="particle-container"></div>
+
+<h1>This Is For U Mom 💖</h1>
+
+<div class="subtitle">
+Choose one surprise ✨
+</div>
+
+<div class="cards">
+
+    <!-- camera -->
+    <div class="card" onclick="openCamera()">
+
+        <div class="icon">📸</div>
+
+        <div class="cardText">
+            Memories
+        </div>
+
+    </div>
+
+    <!-- flowers -->
+    <div class="card" onclick="openFlowers()">
+
+        <div class="icon">🌸</div>
+
+        <div class="cardText">
+            Flowers
+        </div>
+
+    </div>
+
+    <!-- envelope -->
+    <div class="card" onclick="openLetter()">
+
+        <div class="icon">💌</div>
+
+        <div class="cardText">
+            Letter
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* pages */
+
+function openCamera(){
+    window.location.href="memories.html";
+}
+
+function openFlowers(){
+    window.location.href="flowers.html";
+}
+
+function openLetter(){
+    window.location.href="letter.html";
+}
+
+/* floating items */
+
+const items=["💖","🌸","💕","🌷","✨","💗"];
+
+setInterval(()=>{
+
+    let el=document.createElement("div");
+
+    el.className="float";
+
+    el.innerHTML=
+    items[Math.floor(Math.random()*items.length)];
+
+    el.style.left=Math.random()*100+"vw";
+
+    el.style.fontSize=
+    (18+Math.random()*22)+"px";
+
+    el.style.animationDuration=
+    (5+Math.random()*5)+"s";
+
+    document.body.appendChild(el);
+
+    setTimeout(()=>{
+        el.remove();
+    },10000);
+
+},350);
+
+/* sparkles */
+
+for(let i=0;i<30;i++){
+
+    let s=document.createElement("div");
+
+    s.className="sparkle";
+
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+
+    s.style.animationDelay=Math.random()*3+"s";
+
+    document.body.appendChild(s);
+}
+
+/* cursor effect */
+
+/* premium cursor tail */
+
+document.addEventListener("mousemove",(e)=>{
+
+    let particle=document.createElement("div");
+
+    particle.className="particle";
+
+    particle.style.left=e.clientX+"px";
+    particle.style.top=e.clientY+"px";
+
+    document.body.appendChild(particle);
+
+    setTimeout(()=>{
+        particle.remove();
+    },800);
+
+});
+
+function goBack(){
+    window.location.href="page1.html";
+}
+
+</script>
+<button class="backBtn" onclick="goBack()">
+    Back 💕
+</button>
+</body>
+</html>

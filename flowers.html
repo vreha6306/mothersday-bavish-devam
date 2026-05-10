@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>flowers.html</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+h1{
+
+    position:absolute;
+
+    top:35px;
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:48px;
+
+    color:#ff4f87;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,0.8),
+    0 0 25px rgba(255,105,180,0.25);
+
+    z-index:10;
+}
+
+body{
+
+    height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:'Poppins',sans-serif;
+
+    position:relative;
+
+    background:linear-gradient(-45deg,
+    #ffe0ec,
+    #fff0e7,
+    #f9ddff,
+    #ffe8f3);
+
+    background-size:400% 400%;
+    animation:bgMove 10s ease infinite;
+}
+
+/* bg animation */
+
+@keyframes bgMove{
+
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* main container */
+
+.container{
+
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:140px;
+
+    position:relative;
+}
+
+/* quote side */
+
+.side{
+
+    display:flex;
+    flex-direction:column;
+    gap:35px;
+}
+
+/* quote box */
+
+.quote{
+
+    width:280px;
+
+    padding:22px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,0.35);
+
+    backdrop-filter:blur(10px);
+
+    color:#ff4f87;
+
+    font-size:18px;
+    line-height:1.6;
+
+    box-shadow:
+    0 10px 25px rgba(255,105,180,0.2);
+
+    animation:floatBox 4s ease-in-out infinite;
+}
+
+/* alternate alignment */
+
+.left{
+    margin-right:40px;
+}
+
+.right{
+    margin-left:40px;
+}
+
+/* floating effect */
+
+@keyframes floatBox{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+/* bouquet center */
+
+.bouquet{
+
+    position:relative;
+
+    width:320px;
+    height:420px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.bouquetImg{
+
+    width:340px;
+
+    animation:floatBouquet 4s ease-in-out infinite;
+
+    filter:
+    drop-shadow(0 10px 25px rgba(255,105,180,0.25));
+}
+
+@keyframes floatBouquet{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+/* floating bg items */
+
+.float{
+
+    position:absolute;
+
+    bottom:-50px;
+
+    animation:floatUp linear forwards;
+
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* sparkles */
+
+.sparkle{
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    background:white;
+
+    border-radius:50%;
+
+    animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:0.3;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.8);
+    }
+}
+
+/* back button */
+
+button{
+
+    position:absolute;
+
+    bottom:35px;
+
+    padding:12px 30px;
+
+    border:none;
+    border-radius:40px;
+
+    background:linear-gradient(45deg,#ff5f9e,#ff8fab);
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 25px rgba(255,105,180,0.3);
+
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+/* PREMIUM CURSOR TAIL */
+
+.particle{
+
+    position:fixed;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,105,180,1),
+    rgba(255,105,180,0));
+
+    z-index:9999;
+
+    animation:fadeOut 0.8s linear forwards;
+}
+
+@keyframes fadeOut{
+
+    from{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    to{
+        opacity:0;
+        transform:scale(2.8);
+    }
+}
+
+/* mobile */
+
+@media(max-width:1000px){
+
+    body{
+        overflow:auto;
+        padding:40px 0;
+    }
+
+    .container{
+        flex-direction:column;
+        gap:35px;
+    }
+
+    .side{
+        align-items:center;
+    }
+
+    .left,.right{
+        margin:0;
+    }
+
+    .quote{
+        width:85%;
+        text-align:center;
+    }
+
+    .bouquet{
+        transform:scale(0.9);
+    }
+
+    h1{
+        font-size:34px;
+        padding:0 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Flowers For The Heart Of Our Home 🌷</h1>
+
+<div class="container">
+
+    <!-- left quotes -->
+
+    <div class="side">
+
+        <div class="quote left">
+            “Mom… your love is the only place where my heart always feels safe 🤍”
+        </div>
+
+        <div class="quote right">
+            “Even if I give you the whole world, it will never match the love you gave me ✨”
+        </div>
+
+    </div>
+
+    <!-- bouquet -->
+
+    <div class="bouquet">
+
+        <img src="bouquet.png.png" class="bouquetImg">
+
+    </div>
+
+    <!-- right quotes -->
+
+    <div class="side">
+
+        <div class="quote left">
+            “A mother understands the feelings her child can never explain 🌸”
+        </div>
+
+        <div class="quote right">
+            “No matter how old I grow, I will always need your love, Maa 💖”
+        </div>
+
+    </div>
+
+</div>
+
+<button onclick="goBack()">
+Back 💕
+</button>
+
+<script>
+
+/* back */
+
+function goBack(){
+    window.location.href="page2.html";
+}
+
+/* floating bg */
+
+const items=["💖","🌸","💕","🌷","✨"];
+
+setInterval(()=>{
+
+    let el=document.createElement("div");
+
+    el.className="float";
+
+    el.innerHTML=
+    items[Math.floor(Math.random()*items.length)];
+
+    el.style.left=Math.random()*100+"vw";
+
+    el.style.fontSize=
+    (18+Math.random()*22)+"px";
+
+    el.style.animationDuration=
+    (5+Math.random()*5)+"s";
+
+    document.body.appendChild(el);
+
+    setTimeout(()=>{
+        el.remove();
+    },10000);
+
+},350);
+
+/* sparkles */
+
+for(let i=0;i<30;i++){
+
+    let s=document.createElement("div");
+
+    s.className="sparkle";
+
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+
+    s.style.animationDelay=Math.random()*3+"s";
+
+    document.body.appendChild(s);
+}
+
+/* PREMIUM CURSOR TAIL */
+
+document.addEventListener("mousemove",(e)=>{
+
+    let particle=document.createElement("div");
+
+    particle.className="particle";
+
+    particle.style.left=e.clientX+"px";
+    particle.style.top=e.clientY+"px";
+
+    document.body.appendChild(particle);
+
+    setTimeout(()=>{
+        particle.remove();
+    },800);
+
+});
+
+</script>
+
+</body>
+</html>

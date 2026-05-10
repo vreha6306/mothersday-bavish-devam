@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>memories.html</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family:'Poppins',sans-serif;
+    position:relative;
+
+    background:linear-gradient(-45deg,
+    #ffe0ec,
+    #fff0e7,
+    #f9ddff,
+    #ffe8f3);
+
+    background-size:400% 400%;
+    animation:bgMove 10s ease infinite;
+}
+
+/* animated bg */
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* title */
+
+h1{
+    color:#ff4f87;
+    font-size:55px;
+    margin-bottom:60px;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,0.8),
+    0 0 25px rgba(255,105,180,0.3);
+
+    animation:fadeUp 1.5s ease;
+}
+
+/* rotating circle */
+
+.gallery{
+
+    position:relative;
+
+    width:420px;
+    height:420px;
+
+    transform-style:preserve-3d;
+
+    animation:rotate 22s linear infinite;
+}
+
+/* rotation */
+
+@keyframes rotate{
+
+    from{
+        transform:rotateY(0deg);
+    }
+
+    to{
+        transform:rotateY(360deg);
+    }
+}
+
+/* photo cards */
+
+.gallery span{
+
+    position:absolute;
+
+    width:170px;
+    height:220px;
+
+    left:125px;
+    top:100px;
+
+    transform-origin:center;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 10px 25px rgba(255,105,180,0.25);
+
+    border:4px solid rgba(255,255,255,0.6);
+
+    background:white;
+}
+
+/* images */
+
+.gallery span img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* each position */
+
+.gallery span:nth-child(1){
+    transform:rotateY(0deg) translateZ(530px);
+}
+
+.gallery span:nth-child(2){
+    transform:rotateY(36deg) translateZ(530px);
+}
+
+.gallery span:nth-child(3){
+    transform:rotateY(72deg) translateZ(530px);
+}
+
+.gallery span:nth-child(4){
+    transform:rotateY(108deg) translateZ(530px);
+}
+
+.gallery span:nth-child(5){
+    transform:rotateY(144deg) translateZ(530px);
+}
+
+.gallery span:nth-child(6){
+    transform:rotateY(180deg) translateZ(530px);
+}
+
+.gallery span:nth-child(7){
+    transform:rotateY(216deg) translateZ(530px);
+}
+
+.gallery span:nth-child(8){
+    transform:rotateY(252deg) translateZ(530px);
+}
+
+.gallery span:nth-child(9){
+    transform:rotateY(288deg) translateZ(530px);
+}
+
+.gallery span:nth-child(10){
+    transform:rotateY(324deg) translateZ(530px);
+}
+
+/* floating hearts */
+
+.float{
+    position:absolute;
+    bottom:-50px;
+    animation:floatUp linear forwards;
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* sparkles */
+
+.sparkle{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:0.3;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.8);
+    }
+}
+
+/* fade */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* back button */
+
+button{
+
+    margin-top:70px;
+
+    padding:12px 30px;
+
+    border:none;
+    border-radius:40px;
+
+    background:linear-gradient(45deg,#ff5f9e,#ff8fab);
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 25px rgba(255,105,180,0.3);
+
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+/* PREMIUM CURSOR TAIL */
+
+.particle{
+
+    position:fixed;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,105,180,1),
+    rgba(255,105,180,0));
+
+    z-index:9999;
+
+    animation:fadeOut 0.8s linear forwards;
+}
+
+@keyframes fadeOut{
+
+    from{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    to{
+        opacity:0;
+        transform:scale(2.8);
+    }
+}
+
+/* mobile */
+
+@media(max-width:700px){
+
+    h1{
+        font-size:38px;
+        text-align:center;
+        margin-bottom:40px;
+    }
+
+    .gallery{
+        width:300px;
+        height:300px;
+    }
+
+    .gallery span{
+
+        width:120px;
+        height:160px;
+
+        left:90px;
+        top:70px;
+    }
+
+    .gallery span:nth-child(1){
+        transform:rotateY(0deg) translateZ(520px);
+    }
+
+    .gallery span:nth-child(2){
+        transform:rotateY(36deg) translateZ(520px);
+    }
+
+    .gallery span:nth-child(3){
+        transform:rotateY(72deg) translateZ(520px);
+    }
+
+    .gallery span:nth-child(4){
+        transform:rotateY(108deg) translateZ(520px);
+    }
+
+    .gallery span:nth-child(5){
+        transform:rotateY(144deg) translateZ(520px);
+    }
+
+    .gallery span:nth-child(6){
+        transform:rotateY(180deg) translateZ(520px);
+    }
+
+    .gallery span:nth-child(7){
+        transform:rotateY(216deg) translateZ(520px);
+    }
+
+    .gallery span:nth-child(8){
+        transform:rotateY(252deg) translateZ(520px);
+    }
+
+    .gallery span:nth-child(9){
+        transform:rotateY(288deg) translateZ(520px);
+    }
+
+    .gallery span:nth-child(10){
+        transform:rotateY(324deg) translateZ(520px);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Our Beautiful Memories 💖</h1>
+
+<div class="gallery">
+
+<span><img src="1.jpg"></span>
+<span><img src="2.jpg"></span>
+<span><img src="3.jpg"></span>
+<span><img src="4.jpg"></span>
+<span><img src="5.jpg"></span>
+<span><img src="6.jpg"></span>
+<span><img src="7.jpg"></span>
+<span><img src="8.jpg"></span>
+<span><img src="9.jpg"></span>
+<span><img src="10.jpg"></span>
+
+</div>
+
+<button onclick="goBack()">
+Back 💕
+</button>
+
+<script>
+
+/* back */
+
+function goBack(){
+    window.location.href="page2.html";
+}
+
+/* floating items */
+
+const items=["💖","🌸","💕","🌷","✨"];
+
+setInterval(()=>{
+
+    let el=document.createElement("div");
+
+    el.className="float";
+
+    el.innerHTML=
+    items[Math.floor(Math.random()*items.length)];
+
+    el.style.left=Math.random()*100+"vw";
+
+    el.style.fontSize=
+    (18+Math.random()*22)+"px";
+
+    el.style.animationDuration=
+    (5+Math.random()*5)+"s";
+
+    document.body.appendChild(el);
+
+    setTimeout(()=>{
+        el.remove();
+    },10000);
+
+},350);
+
+/* sparkles */
+
+for(let i=0;i<30;i++){
+
+    let s=document.createElement("div");
+
+    s.className="sparkle";
+
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+
+    s.style.animationDelay=Math.random()*3+"s";
+
+    document.body.appendChild(s);
+}
+
+/* PREMIUM CURSOR TAIL */
+
+document.addEventListener("mousemove",(e)=>{
+
+    let particle=document.createElement("div");
+
+    particle.className="particle";
+
+    particle.style.left=e.clientX+"px";
+    particle.style.top=e.clientY+"px";
+
+    document.body.appendChild(particle);
+
+    setTimeout(()=>{
+        particle.remove();
+    },800);
+
+});
+
+</script>
+
+</body>
+</html>

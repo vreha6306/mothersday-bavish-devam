@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Happy Mothers Day 💖</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* cursor particles */
+
+.particle{
+
+    position:fixed;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,105,180,1),
+    rgba(255,105,180,0));
+
+    z-index:9999;
+
+    animation:fadeOut 0.8s linear forwards;
+}
+
+@keyframes fadeOut{
+
+    from{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    to{
+        opacity:0;
+        transform:scale(2.8);
+    }
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family:'Poppins',sans-serif;
+    position:relative;
+
+    background:linear-gradient(-45deg,
+    #ffd6de,
+    #ffe9e3,
+    #ffd9ec,
+    #fff3e6);
+
+    background-size:400% 400%;
+    animation:bgMove 10s ease infinite;
+}
+
+/* animated bg */
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* glow particles */
+
+.sparkle{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    opacity:0.8;
+    animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        transform:scale(1);
+        opacity:0.4;
+    }
+
+    50%{
+        transform:scale(1.8);
+        opacity:1;
+    }
+}
+
+/* floating hearts + flowers */
+
+.float{
+    position:absolute;
+    bottom:-50px;
+    animation:floatUp linear forwards;
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* main text */
+
+h1{
+    font-size:70px;
+    text-align:center;
+    color:#ff4f87;
+    text-shadow:
+    0 0 10px rgba(255,255,255,0.9),
+    0 0 30px rgba(255,105,180,0.5);
+
+    animation:fadeUp 1.5s ease;
+}
+
+h1 span{
+    color:#ff2f6d;
+}
+
+/* subtitle */
+
+p{
+    margin-top:18px;
+    font-size:24px;
+    color:#6d4c4c;
+    text-align:center;
+    animation:fadeUp 2s ease;
+}
+
+/* next button */
+
+.nextBtn{
+    margin-top:70px;
+    padding:14px 40px;
+    border:none;
+    border-radius:40px;
+
+    background:linear-gradient(45deg,#ff5f9e,#ff8fab);
+
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+
+    box-shadow:0 8px 25px rgba(255,105,180,0.35);
+
+    transition:0.3s;
+    animation:fadeUp 2.5s ease;
+}
+
+.nextBtn:hover{
+    transform:scale(1.08);
+}
+
+/* fade animation */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* PREMIUM CURSOR TRAIL */
+
+
+
+/* mobile */
+
+@media(max-width:600px){
+
+    h1{
+        font-size:48px;
+        padding:0 15px;
+    }
+
+    p{
+        font-size:18px;
+        padding:0 20px;
+    }
+
+    .nextBtn{
+        font-size:18px;
+        padding:12px 30px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<h1>
+Happy Mothers Day <span>Maa 💖</span>
+</h1>
+
+<p>
+To the most amazing mother in the world ❤️
+</p>
+
+<button class="nextBtn" onclick="nextPage()">
+Next ✨
+</button>
+
+<script>
+
+/* next page */
+
+function nextPage(){
+    window.location.href="page2.html";
+}
+
+/* floating hearts + flowers */
+
+const items=["💖","🌸","💕","🌷","💗","🌺"];
+
+setInterval(()=>{
+
+    let el=document.createElement("div");
+
+    el.className="float";
+
+    el.innerHTML=
+    items[Math.floor(Math.random()*items.length)];
+
+    el.style.left=Math.random()*100+"vw";
+
+    el.style.fontSize=
+    (20+Math.random()*25)+"px";
+
+    el.style.animationDuration=
+    (5+Math.random()*5)+"s";
+
+    document.body.appendChild(el);
+
+    setTimeout(()=>{
+        el.remove();
+    },10000);
+
+},300);
+
+/* sparkles */
+
+for(let i=0;i<25;i++){
+
+    let s=document.createElement("div");
+
+    s.className="sparkle";
+
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+
+    s.style.animationDelay=Math.random()*3+"s";
+
+    document.body.appendChild(s);
+}
+
+/* PREMIUM CURSOR TRAIL */
+/* premium cursor tail */
+
+document.addEventListener("mousemove",(e)=>{
+
+    let particle=document.createElement("div");
+
+    particle.className="particle";
+
+    particle.style.left=e.clientX+"px";
+    particle.style.top=e.clientY+"px";
+
+    document.body.appendChild(particle);
+
+    setTimeout(()=>{
+        particle.remove();
+    },800);
+
+});
+
+
+</script>
+
+</body>
+</html>
